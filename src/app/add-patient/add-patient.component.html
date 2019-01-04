@@ -1,0 +1,65 @@
+<div class="row" align="center">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <h1>Formulaire pour l'ajout d'un patient </h1><br/><br/>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" id="patientName" class="ng-valid required" required name="patientName" placeholder="Nom" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput type="text" id="patientForname" class="ng-valid required" required name="patientForname" placeholder="Prénom" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Sexe</mat-label>
+          <mat-select name="patientSex" placeholder="Sexe" [(value)]="sexe">
+            <mat-option value="M">M</mat-option>
+            <mat-option value="F">F</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Numéro Sécurité Sociale</mat-label>
+          <input matInput type="text" id="patientNumber" class="ng-valid required" required name="patientNumber" placeholder="Numéro Sécurité Sociale" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Ville</mat-label>
+          <input matInput type="text" id="patientCity" class="ng-valid required" required name="patientCity" placeholder="Ville" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Code Postal</mat-label>
+          <input matInput type="text" id="patientPostalCode" class="ng-valid required" required name="patientPostalCode" placeholder="Code Postal" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Rue</mat-label>
+          <input matInput type="text" id="patientStreet" class="ng-valid required" required name="patientStreet" placeholder="Rue" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Numéro</mat-label>
+          <input matInput type="text" id="patientStreetNumber" class="ng-valid required" required name="patientStreetNumber" placeholder="Numéro" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Etage</mat-label>
+          <input matInput type="text" id="patientFloor" class="ng-valid required" required name="patientFloor" placeholder="Etage" ngModel>
+        </mat-form-field>
+      </div>
+      <button class="btn btn-primary" type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>

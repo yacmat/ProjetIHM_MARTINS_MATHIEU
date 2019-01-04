@@ -1,0 +1,21 @@
+.button-row button,
+.button-row a {
+  display: block;
+  margin : auto;
+}
+
+.icon {
+  padding: 0 5px;
+}
+
+.spacer {
+  flex: 300 300 auto;
+}
+
+mat-card {
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
+}
+
+
+
