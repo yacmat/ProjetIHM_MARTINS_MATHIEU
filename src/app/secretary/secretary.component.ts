@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CabinetMedicalService} from "../cabinet-medical.service";
 import {CabinetInterface} from "../dataInterfaces/cabinet";
+import {PatientComponent} from "../patient/patient.component";
 
 @Component({
   selector: 'app-secretary',
@@ -9,6 +10,7 @@ import {CabinetInterface} from "../dataInterfaces/cabinet";
 })
 export class SecretaryComponent implements OnInit {
   private _cms: CabinetInterface;
+  private patient: PatientComponent;
   public get cms(): CabinetInterface {return this._cms;}
 
   constructor(cabinetMedicalService: CabinetMedicalService) {
@@ -29,7 +31,6 @@ export class SecretaryComponent implements OnInit {
 
   addPatient(patient){
     this._cms.patientsNonAffectés.push(patient);
-    this._cms.patientsNonAffectés.forEach(e => console.log(e));
     this.refresh();
   }
 

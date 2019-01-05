@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CabinetMedicalService} from "../cabinet-medical.service";
 import {CabinetInterface} from "../dataInterfaces/cabinet";
-import { NgForm } from "@angular/forms";
 import {PatientInterface} from "../dataInterfaces/patient";
-import { AddPatientComponent } from "../add-patient/add-patient.component";
+import {sexeEnum} from "../dataInterfaces/sexe";
 
 @Component({
   selector: 'app-infirmier',
@@ -29,8 +28,19 @@ export class InfirmierComponent implements OnInit  {
     return infirmier.prénom;
   }
 
+  public getNum(patient){
+    return patient.numéroSécuritéSociale;
+  }
+
   public addPatients(){
     this._add = !this._add;
+  }
+
+  public getSexe(patient){
+    if (patient.sexe === sexeEnum.M){
+      return "Masculin";
+    }
+    else return "Féminin";
   }
 
   public isAdding(){

@@ -1,5 +1,20 @@
-Patients Non Affectés :
-<mat-list>
-  <mat-list-item *ngFor="let patient of patientsNA">{{patient.nom}} {{getprenom(patient)}}</mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+<h2 align="center">Patients Non Affectés :</h2>
+<p align="center">Il y a {{getNb()}} patients non afféctés </p>
+<div style="width:500px;height:500px" cdkDropList (cdkDropListDropped)="drop($event)">
+<mat-expansion-panel *ngFor="let patient of patientsNA" (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false" cdkDrag>
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      {{patient.nom}} {{getprenom(patient)}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <p>Sexe : {{getSexe(patient)}}</p>
+  <p>Ville : {{patient.adresse.ville}}</p>
+  <p>Adresse : {{patient.adresse.rue}}</p>
+  <p>N° Sécurité Sociale : {{getNum(patient)}}</p>
+</mat-expansion-panel>
+</div>
+
+
+
+

@@ -7,18 +7,28 @@
         <mat-card-title>{{getprenom(infirmier)}}</mat-card-title>
         <mat-card-subtitle>{{infirmier.nom}}</mat-card-subtitle>
         <mat-card-subtitle>ID : {{infirmier.id}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="http://localhost:8090/data/{{infirmier.photo}}"/>
+      </mat-card-header><br/>
+      <div style="width:100%" align="center">
+      <img mat-card-image src="http://localhost:8090/data/{{infirmier.photo}}" style="width:300px;height:300px"/>
+      </div>
       <mat-card-actions>
         <div class="button-row">
           <button mat-raised-button color="primary" (click)="addPatients()" (submit)="none()" align="center">Ajouter Patient</button>
         </div>
       </mat-card-actions>
-      <div align="center">Patients :</div>
-      <mat-list *ngFor="let patient of infirmier.patients">
-        <mat-list-item>{{patient.nom}} {{getprenom(patient)}}</mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
+      <h2 align="center">Patients :</h2>
+      <mat-expansion-panel *ngFor="let patient of infirmier.patients" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{patient.nom}} {{getprenom(patient)}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Sexe : {{getSexe(patient)}}</p>
+        <p>Ville : {{patient.adresse.ville}}</p>
+        <p>Adresse : {{patient.adresse.rue}}</p>
+        <p>N° Sécurité Sociale : {{getNum(patient)}}</p>
+      </mat-expansion-panel>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
