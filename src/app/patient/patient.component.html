@@ -1,13 +1,13 @@
 <h2 align="center">Patients Non Affectés :</h2>
-<p align="center">Il y a {{getNb()}} patients non afféctés </p>
+<p align="center">Il y a {{getNb()}} patient(s) non affécté(s) </p>
 <div class="button-row" align="center">
   <button mat-raised-button color="primary" (click)="addPatients()" (submit)="none()" align="center">Ajouter Patient</button>
   <app-add-patient *ngIf="isAdding()"></app-add-patient>
 </div>
-<div style="width:500px;height:500px" cdkDropList (cdkDropListDropped)="drop($event)">
+<div style="width:500px;height:500px" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="patientsNA">
 <mat-expansion-panel *ngFor="let patient of patientsNA" (opened)="panelOpenState = true"
                      (closed)="panelOpenState = false" cdkDrag>
-  <mat-expansion-panel-header >
+  <mat-expansion-panel-header>
     <mat-panel-title>
       {{patient.nom}} {{getprenom(patient)}}
     </mat-panel-title>

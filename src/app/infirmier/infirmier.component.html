@@ -1,6 +1,6 @@
 <mat-grid-list cols="3">
-  <mat-grid-tile [rowspan]="2" [style.border-right]="'3px dashed #ddd'" *ngFor="let infirmier of cms.infirmiers"  >
-    <mat-card>
+  <mat-grid-tile [rowspan]="2" [style.border-right]="'3px dashed #ddd'" *ngFor="let infirmier of cms.infirmiers" >
+    <mat-card cdkDropList [cdkDropListData]="getPatients(infirmier)" (cdkDropListDropped)="drop($event)" [id]="infirmier.id" cdkDropList>
       <mat-card-header>
         <mat-icon>account_box</mat-icon>
         <div mat-card-avatar class="example-header-image"></div>
@@ -11,9 +11,10 @@
       <div style="width:100%" align="center">
       <img mat-card-image src="http://localhost:8090/data/{{infirmier.photo}}" style="width:300px;height:300px"/>
       </div>
-      <h2 align="center">Patients :</h2>
+      <h2 align="center">Patient(s) :</h2>
+      <div >
       <mat-expansion-panel *ngFor="let patient of infirmier.patients" (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
+                           (closed)="panelOpenState = false" cdkDrag>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{patient.nom}} {{getprenom(patient)}}
@@ -24,6 +25,7 @@
         <p>Adresse : {{patient.adresse.rue}}</p>
         <p>N° Sécurité Sociale : {{getNum(patient)}}</p>
       </mat-expansion-panel>
+      </div>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

@@ -5,6 +5,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 
 import {NgForm} from "@angular/forms";
 import {SecretaryComponent} from "../secretary/secretary.component";
+import {isEmpty} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-patient',
@@ -60,21 +61,20 @@ export class AddPatientComponent implements OnInit {
       }
     };
     return new Promise<PatientInterface>((resolve, reject) => {
-        patient.nom = form.value['patientName'];
-        patient.prénom = form.value['patientForname'];
-        patient.sexe = this.sexe === "M" ? sexeEnum.M : sexeEnum.F;
-
-        if(this.verif_cp(form.value['patientPostalCode']) && this.verif_num(form.value['patientNumber'])){
-          patient.adresse.codePostal = parseInt(form.value['patientPostalCode']);
-          patient.adresse.numéro = form.value['patientStreetNumber'];
-          patient.adresse.rue = form.value['patientStreet'];
-          patient.adresse.ville = form.value['patientCity'];
-          patient.adresse.étage = form.value['patientFloor'];
-          patient.numéroSécuritéSociale = form.value['patientNumber'];
-          resolve(this.addPatient(patient));
-        }
-        else{
-          reject(console.log("Données non valides"));
+        console.log(form.value['patientSex']);
+        if(this.verif_all(form.value['patientStreet'],form.value['patientCity'],form.value['patientName'],form.value['patientForname'])) {
+          if (this.verif_cp(form.value['patientPostalCode']) && this.verif_num(form.value['patientNumber'])) {
+            patient.nom = form.value['patientName'];
+            patient.prénom = form.value['patientForname'];
+            patient.sexe = this.sexe === "M" ? sexeEnum.M : sexeEnum.F;
+            patient.adresse.codePostal = parseInt(form.value['patientPostalCode']);
+            patient.adresse.numéro = form.value['patientStreetNumber'];
+            patient.adresse.rue = form.value['patientStreet'];
+            patient.adresse.ville = form.value['patientCity'];
+            patient.adresse.étage = form.value['patientFloor'];
+            patient.numéroSécuritéSociale = form.value['patientNumber'];
+            resolve(this.addPatient(patient));
+          }
         }
 
       }
@@ -109,6 +109,16 @@ export class AddPatientComponent implements OnInit {
     {
       window.alert('La saisie du numéro de sécurité sociale est invalide !');
       return false;
+    }
+  }
+
+  public verif_all(saisie1,saisie2,saisie3,saisie4){
+    if(saisie1 === '' || saisie2 === '' || saisie3 === '' || saisie4 === ''){
+      window.alert('Veuillez remplir tous les champs');
+      return false;
+    }
+    else{
+      return true;
     }
   }
 

@@ -58,7 +58,7 @@ export class CabinetMedicalService {
       const affectations = patientsXML.map((P, i) => {
         const visiteXML = P.querySelector("visite[intervenant]");
         let infirmier: InfirmierInterface = null;
-        if (visiteXML !== null) {
+        if (visiteXML !== null &&  P.querySelector("visite").getAttribute("intervenant") !== '') {
           infirmier = cabinet.infirmiers.find(I => I.id === visiteXML.getAttribute("intervenant"));
         }
         return {patient: patients[i], infirmier: infirmier};
@@ -78,6 +78,16 @@ export class CabinetMedicalService {
       console.error("ERROR in getData", err);
     }
 
+  }
+
+  public async affectation(infirmierId: string, numéroSécuritéSociale: number){
+    console.log("ID : " + infirmierId + " Numéro : " + numéroSécuritéSociale);
+    const res = await this._http.post( "/affectation", {
+      infirmier: infirmierId,
+      patient: numéroSécuritéSociale
+    }, {observe: 'response'}).toPromise<HttpResponse<any>>();
+
+    console.log('Affectation patient renvoie', res);
   }
 
   private getAdressFrom(root: Element): Adresse {

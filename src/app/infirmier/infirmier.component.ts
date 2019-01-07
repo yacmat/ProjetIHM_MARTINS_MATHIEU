@@ -3,8 +3,8 @@ import {CabinetMedicalService} from "../cabinet-medical.service";
 import {CabinetInterface} from "../dataInterfaces/cabinet";
 import {PatientInterface} from "../dataInterfaces/patient";
 import {sexeEnum} from "../dataInterfaces/sexe";
-import {HttpClient} from "@angular/common/http";
-import {InfirmierInterface} from "../dataInterfaces/infirmier";
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-infirmier',
@@ -13,12 +13,14 @@ import {InfirmierInterface} from "../dataInterfaces/infirmier";
 })
 export class InfirmierComponent implements OnInit  {
   private _cms: CabinetInterface;
+  private cabinet : CabinetMedicalService;
   private _http: HttpClient;
   public patient: PatientInterface;
 
   public get cms(): CabinetInterface {return this._cms;}
 
   constructor(cabinetMedicalService: CabinetMedicalService) {
+    this.cabinet = cabinetMedicalService;
     this.initCabinet(cabinetMedicalService);
   }
 
@@ -41,18 +43,22 @@ export class InfirmierComponent implements OnInit  {
     else return "Féminin";
   }
 
-  public affectation(patient: PatientInterface, infirmierId: string){
-    this._http.post( "/affectation", {
-      infirmier: infirmierId,
-      patient: patient.numéroSécuritéSociale
-    }, {observe: 'response'})
+  public getPatients(infirmier){
+    return infirmier.patients;
   }
 
-  public desaffectation(patient: PatientInterface){
-    this._http.post( "/affectation", {
-      infirmier: "none",
-      patient: patient.numéroSécuritéSociale
-    }, {observe: 'response'})
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+
+    //@ts-ignore
+    this.cabinet.affectation(event.container.id, event.container.data[event.currentIndex].numéroSécuritéSociale);
   }
 
   ngOnInit() {

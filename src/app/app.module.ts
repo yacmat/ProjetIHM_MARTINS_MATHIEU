@@ -11,6 +11,7 @@ import { InfirmierComponent } from "./infirmier/infirmier.component";
 import { PatientComponent } from "./patient/patient.component";
 import { AddPatientComponent } from "./add-patient/add-patient.component";
 import { FormsModule } from "@angular/forms";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FormsModule } from "@angular/forms";
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

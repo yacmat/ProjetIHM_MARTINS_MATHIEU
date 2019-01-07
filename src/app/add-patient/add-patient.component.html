@@ -17,7 +17,7 @@
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label>Sexe</mat-label>
-          <mat-select name="patientSex" placeholder="Sexe" [(value)]="sexe">
+          <mat-select  class="ng-valid required" id="patientSex" name="patientSex" placeholder="Sexe" [(value)]="sexe" required ngModel>
             <mat-option value="M">M</mat-option>
             <mat-option value="F">F</mat-option>
           </mat-select>
@@ -50,13 +50,13 @@
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label>Numéro</mat-label>
-          <input matInput type="text" id="patientStreetNumber" class="ng-valid required" required name="patientStreetNumber" placeholder="Numéro" ngModel>
+          <input matInput type="text" id="patientStreetNumber" name="patientStreetNumber" placeholder="Numéro" ngModel>
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label>Etage</mat-label>
-          <input matInput type="text" id="patientFloor" class="ng-valid required" required name="patientFloor" placeholder="Etage" ngModel>
+          <input matInput type="text" id="patientFloor" name="patientFloor" placeholder="Etage" ngModel>
         </mat-form-field>
       </div>
       <button class="btn btn-primary" type="submit">Envoyer</button>
