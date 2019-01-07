@@ -13,8 +13,8 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <p>Sexe : {{getSexe(patient)}}</p>
-  <p>Ville : {{patient.adresse.ville}}</p>
-  <p>Adresse : {{patient.adresse.rue}}</p>
+  <p>Adresse : , {{patient.adresse.rue}}</p>
+  <p>{{patient.adresse.codePostal}} , {{patient.adresse.ville}}</p>
   <p>N° Sécurité Sociale : {{getNum(patient)}}</p>
 </mat-expansion-panel>
 </div>

@@ -35,6 +35,10 @@ export class PatientComponent implements OnInit {
     return patient.numéroSécuritéSociale;
   }
 
+  public getNR(patient){
+    return patient.adresse.numéro;
+  }
+
   public isAdding(){
     return this._add;
   }

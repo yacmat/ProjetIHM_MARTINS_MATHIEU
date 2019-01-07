@@ -43,6 +43,10 @@ export class InfirmierComponent implements OnInit  {
     else return "Féminin";
   }
 
+  public getNR(patient){
+    return patient.adresse.numéro;
+  }
+
   public getPatients(infirmier){
     return infirmier.patients;
   }
