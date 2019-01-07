@@ -34,7 +34,7 @@ Ce projet a été réalisé par MARTINS Benoît ainsi que MATHIEU Yacine, étudi
 
 Pour lancer le projet, il suffit de lancer le serveur qui sera disponible sur localhost:8090 et ensuite le client localhost:4200.
 
-#---------Interface-------#
+## #---------Interface-------#
 
 Toute l'interface ainsi que le drag and drop ont été réalisés à l'aide de la bibliothèque Angular Material.
 
@@ -45,14 +45,14 @@ son adresse ou encore son numéro de sécurité sociale.
 
 Ensuite, nous avons la liste des patients non affectés qui sont également sous forme d'expansion panel.
 
-#---------Ajout patient non affecté-------#
+## #---------Ajout patient non affecté-------#
 
 Nous pouvons ajouter un nouveau patient non affecté à l'aide du bouton "Ajouter patient" qui affiche un formulaire avec les informations à rentrer pour ajouter un patient.
 Les vérifications du numéro de sécurité sociale ainsi que du code postal sont effectués à l'aide de pattern et une boîte de dialogue s'affiche pour informer l'utilisateur de la validité des informations.
 
 Si les informations sont correctes, un nouveau patient sera affiché dans la liste des patients non affectés.
 
-#---------Affectation et Désaffectation-------#
+## #---------Affectation et Désaffectation-------#
 
 Pour affecter un patient à une infirmière, nous avons utilisé le drag and drop d'Angular material. Il suffit de prendre un patient et de le faire glisser sur la zone de l'infirmière à qui l'on veur faire l'affectation.
 Idem pour rendre un patient non affecté mais dans l'autre sens avec le drag and drop.
