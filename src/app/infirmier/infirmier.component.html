@@ -11,11 +11,6 @@
       <div style="width:100%" align="center">
       <img mat-card-image src="http://localhost:8090/data/{{infirmier.photo}}" style="width:300px;height:300px"/>
       </div>
-      <mat-card-actions>
-        <div class="button-row">
-          <button mat-raised-button color="primary" (click)="addPatients()" (submit)="none()" align="center">Ajouter Patient</button>
-        </div>
-      </mat-card-actions>
       <h2 align="center">Patients :</h2>
       <mat-expansion-panel *ngFor="let patient of infirmier.patients" (opened)="panelOpenState = true"
                            (closed)="panelOpenState = false">
@@ -33,6 +28,6 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<app-add-patient *ngIf="isAdding()"></app-add-patient>
+
 
 

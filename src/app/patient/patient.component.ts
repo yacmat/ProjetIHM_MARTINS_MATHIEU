@@ -13,6 +13,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 export class PatientComponent implements OnInit {
   public patientsNA: PatientInterface[];
   private _cms: CabinetInterface;
+  private _add = false;
   public get cms(): CabinetInterface {return this._cms;}
 
   constructor(cabinetMedicalService: CabinetMedicalService) {
@@ -31,6 +32,18 @@ export class PatientComponent implements OnInit {
 
   getNum(patient){
     return patient.numéroSécuritéSociale;
+  }
+
+  public isAdding(){
+    return this._add;
+  }
+
+  public addPatients(){
+    this._add = !this._add;
+  }
+
+  public none(){
+    this._add = false;
   }
 
   getNb(){

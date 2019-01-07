@@ -63,15 +63,54 @@ export class AddPatientComponent implements OnInit {
         patient.nom = form.value['patientName'];
         patient.prénom = form.value['patientForname'];
         patient.sexe = this.sexe === "M" ? sexeEnum.M : sexeEnum.F;
-        patient.adresse.codePostal = parseInt(form.value['patientPostalCode']);
-        patient.adresse.numéro = form.value['patientStreetNumber'];
-        patient.adresse.rue = form.value['patientStreet'];
-        patient.adresse.ville = form.value['patientCity'];
-        patient.adresse.étage = form.value['patientFloor'];
-        patient.numéroSécuritéSociale = form.value['patientNumber'];
-        resolve(this.addPatient(patient));
+
+        if(this.verif_cp(form.value['patientPostalCode']) && this.verif_num(form.value['patientNumber'])){
+          patient.adresse.codePostal = parseInt(form.value['patientPostalCode']);
+          patient.adresse.numéro = form.value['patientStreetNumber'];
+          patient.adresse.rue = form.value['patientStreet'];
+          patient.adresse.ville = form.value['patientCity'];
+          patient.adresse.étage = form.value['patientFloor'];
+          patient.numéroSécuritéSociale = form.value['patientNumber'];
+          resolve(this.addPatient(patient));
+        }
+        else{
+          reject(console.log("Données non valides"));
+        }
+
       }
     )};
+
+  public verif_cp(saisie)
+  {
+    var pattern = /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/;
+
+    if (pattern.test(saisie))
+    {
+      window.alert('La saisie est un code postal valide !');
+      return true;
+    }
+    else
+    {
+      window.alert('La saisie du code postal est invalide !');
+      return false;
+    }
+  }
+
+  public verif_num(saisie)
+  {
+    var pattern = /([1-4]|[7-8])([0-9][0-9])((0[0-9])|(1[0-2])|(6[2-3]))((((([0-1][1-9])|10)|(2A)|(2B)|(2[1-9])|([3-9][0-9]))(([0-9][0-8][1-9])|([0-9][1-8][0-9])|([1-9][0-9]00)))|((9[7-8][0-9])(([0-8][1-9])|([1-9]0)))|((99)(([0-9][0-8][1-9])|([0-9][1-8][0-9])|([1-9][0-9]00))))(([0-9][0-8][1-9])|([0-9][1-9][0-9])|([1-9]00))((0[1-9])|([1-8][0-9])|(9[0-7]))/;
+
+    if (pattern.test(saisie))
+    {
+      window.alert('La saisie est un numéro de sécurité sociale valide !');
+      return true;
+    }
+    else
+    {
+      window.alert('La saisie du numéro de sécurité sociale est invalide !');
+      return false;
+    }
+  }
 
 
   ngOnInit() {
