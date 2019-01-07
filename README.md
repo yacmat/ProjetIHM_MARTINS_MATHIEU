@@ -56,4 +56,3 @@ Si les informations sont correctes, un nouveau patient sera affiché dans la lis
 
 Pour affecter un patient à une infirmière, nous avons utilisé le drag and drop d'Angular material. Il suffit de prendre un patient et de le faire glisser sur la zone de l'infirmière à qui l'on veur faire l'affectation.
 Idem pour rendre un patient non affecté mais dans l'autre sens avec le drag and drop.
->>>>>>> 8bb0027e9a855afb46bd802177ea31465ab8c1bc
