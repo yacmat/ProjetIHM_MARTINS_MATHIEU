@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-#--------------Partie Projet------------#
+## #--------------Partie Projet------------#
 
 Ce projet a été réalisé par MARTINS Benoît ainsi que MATHIEU Yacine, étudiants en L3 MIAGE.
 
